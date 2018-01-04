@@ -1,0 +1,39 @@
+<div>
+  <h3 class="-align-center">Register a new responder</h3>
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="firstname" class="col-md-2 control-label">First Name</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="firstname" placeholder="Enter First Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastname" class="col-md-2 control-label">Last Name</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="lastname" placeholder="Enter Last Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="department" class="col-md-2 control-label">Select Department</label>
+      <div class="col-md-10">
+        <select id="department" class="form-control">
+          <option>Select a department</option>
+          <option>Health Department</option>
+          <option>Police Department</option>
+          <option>Fire Department</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="token" class="col-md-4 control-label">Generate app token</label>
+      <input contenteditable="false" id="token" class="col-md-4">
+      <button type="button" class="btn btn-success col-md-offset-2">Generate</button>
+    </div>
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-default">Register Responder</button>
+        </div>
+      </div>
+  </form>
+</div>

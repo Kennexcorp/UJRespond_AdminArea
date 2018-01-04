@@ -1,0 +1,146 @@
+<!--
+ <div class="row">
+
+    <div class="col-lg-4 text-center v-center col-lg-offset-4" id="auth_container">
+      <br>
+      <br>
+      <div class="fa fa-lock fa-5x"></div>
+
+      <br>
+      <br>
+      <p *ngIf="errorMessage.length > 0" class="text-danger">
+        {{ errorMessage }}
+      </p>
+      <p *ngIf="error.message.length > 0" class="text-danger">
+        {{ error.message }}
+      </p>
+      <form class="col-lg-12" (ngSubmit)="onSignUp()">
+        <div class="input-group" style="width: 340px; text-align: center; margin: 0 auto;">
+          <input class="form-control input-lg" title="Confidential signup."
+                 placeholder="Enter your email address" name="email" id="email" type="email" required [(ngModel)] = "email">
+        </div>
+        <br>
+        <div class="input-group" style="width: 340px; text-align: center; margin: 0 auto;">
+          <input class="form-control input-lg" title="Confidential signup."
+                 placeholder="Enter your Password" type="password" name="password" id="password" required [(ngModel)]="password">
+        </div>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary" style="width: 340px">
+          Register/Login
+        </button>
+      </form>
+      <div>&nbsp;</div>
+      <div>&nbsp;</div>
+      <div>&nbsp;</div>
+      <a routerLink="/Signup" routerLinkActive="active">No Account? <strong>Create one here</strong></a>
+    </div>
+   <br/>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+ &lt;!&ndash; <div class="row">
+    <div class="col-lg-12 text-center v-center" style="font-size: 39pt;">
+      <a href="#"><span class="avatar"><i class="fa fa-google-plus"></i></span></a>
+      <a href="#"><span class="avatar"><i class="fa fa-linkedin"></i></span></a>
+      <a href="#"><span class="avatar"><i class="fa fa-facebook"></i></span></a>
+      <a href="#"><span class="avatar"><i class="fa fa-github"></i></span></a>
+    </div>
+
+  </div>&ndash;&gt;
+-->
+<div *ngIf="!authService.isUserEmailLoggedIn" class="row" style="margin: 0">
+  <div class="row" style="margin: 0">
+    <div class="col-lg-4 text-center v-center col-lg-offset-4" *ngIf="isNewUser">
+      <div>
+        <img src="../../assets/img/register.png" style="width: 150px; height: 150px">
+      </div>
+      <div>&nbsp;</div>
+
+      <p *ngIf="errorMessage.length > 0" class="text-danger">
+        {{errorMessage}}</p>
+
+      <p *ngIf="error.message.length > 0" class="text-danger">
+        {{error.message}}</p>
+
+      <form (ngSubmit)="onSignUp()" class="col-lg-12">
+        <div class="form-group">
+          <label for="email">Email</label>
+        </div>
+        <div class="input-group" style="width: 340px; text-align: center; margin: 0 auto;">
+          <input class="form-control input-lg"
+                 placeholder="Enter your email address" name="email" id="_email" type="email" required [(ngModel)] = "email">
+        </div>
+        <!--Password-->
+        <div>&nbsp;</div>
+        <div class="form-group">
+          <label for="password">Password</label>
+        </div>
+        <div class="input-group" style="width: 340px; text-align: center; margin: 0 auto;">
+          <input class="form-control input-lg"
+                 placeholder="Enter your Password" type="password" name="password" id="_password" required [(ngModel)]="password">
+        </div>
+
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary" style="width: 340px">
+          Register
+        </button>
+        <!--<button type="submit" class="btn btn-success">Register</button>-->
+      </form>
+
+      <div>&nbsp;</div>
+      <h3>Already have an Account? <strong (click)="changeForm()" class="-link">Log In</strong></h3>
+
+      <!-- <h4 class="text-primary" (click)="changeForm()">Already have an Account? >> Log In</h4>-->
+    </div>
+  </div>
+
+  <div class="row" style="margin: 0">
+    <div class="col-lg-4 text-center v-center col-lg-offset-4" *ngIf="!isNewUser">
+      <div>
+        <img src="../../assets/img/lock.svg" style="width: 150px; height: 150px">
+      </div>
+      <div>&nbsp;</div>
+      <p *ngIf="errorMessage.length > 0" class="text-danger">
+        {{errorMessage}}</p>
+
+      <p *ngIf="error.message.length > 0" class="text-danger">
+        {{error.message}}</p>
+
+      <form (ngSubmit)="onLoginEmail()">
+        <div class="form-group">
+          <label for="email">Email</label> <!--<input type="text"
+                                                class="form-control" id="email" name="email" required
+                                                [(ngModel)]="email">-->
+        </div>
+        <div class="input-group" style="width: 340px; text-align: center; margin: 0 auto;">
+          <input class="form-control input-lg" title="Confidential signup."
+                 placeholder="Enter your email address" name="email" id="email" type="email" required [(ngModel)] = "email">
+        </div>
+        <div>&nbsp;</div>
+        <div class="form-group">
+          <label for="password">Password</label> <!--<input type="password"
+                                                      class="form-control" id="password" name="password" required
+                                                      [(ngModel)]="password">-->
+        </div>
+
+        <div class="input-group" style="width: 340px; text-align: center; margin: 0 auto;">
+          <input class="form-control input-lg" title="Confidential signup."
+                 placeholder="Enter your Password" type="password" name="password" id="password" required [(ngModel)]="password">
+        </div>
+
+        <!--<button type="submit" class="btn btn-success">Log In</button>-->
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary" style="width: 340px">
+          Login
+        </button>
+      </form>
+      <div>&nbsp;</div>
+      <!--<h3>Already have an Account? <strong (click)="changeForm()" class="-link">Register</strong></h3>-->
+    </div>
+  </div>
+</div>

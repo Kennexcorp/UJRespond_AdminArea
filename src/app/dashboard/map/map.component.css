@@ -1,0 +1,6 @@
+:host, google-map, #map {
+  display: block;
+  width: 100%;
+  height: 450px;
+  background-color: darkgray;
+}
