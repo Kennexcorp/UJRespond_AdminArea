@@ -1,0 +1,23 @@
+<div class="mdc-card" style="height: 530px; overflow-y: auto;">
+  <h3 style="text-align: center; font-family: 'Arial Black'; font-size: medium; margin: 0; padding: 20px; color: white; background-color: blue">Post New Tip</h3>
+  <div style="padding: 10px">
+    <form (ngSubmit)="sendTip(tip)">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Tip's Title" required [(ngModel)]="tip.title">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea rows="10" class="form-control" id="description" placeholder="Tip's Description" required [(ngModel)]="tip.description" name="description"></textarea>
+      </div>
+        <button type="submit" class="mdc-button--raised mdc-layout-grid__cell--span-12" style="alignment: center; width: 50%; margin-left: 25%">
+          Post Tip
+        </button>
+      <!--<button type="submit" class="btn btn-success">Register</button>-->
+    </form>
+  </div>
+
+</div>
+<button class="mdc-button--raised" (click)="mapView()">
+  Back to Map View
+</button>

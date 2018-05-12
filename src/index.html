@@ -6,24 +6,45 @@
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="assets/img/logo.png">
   <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
   <!--<link rel="stylesheet" type="text/css" href="css/local.css" />-->
 
-  <script type="text/javascript" src="assets/js/jquery-1.10.2.min.js"></script>
+  <!--<script type="text/javascript" src="assets/js/jquery-1.10.2.min.js"></script>-->
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
-
-  <!-- you need to include the shieldui css and js assets in order for the charts to work -->
-  <!--<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />-->
-  <!--<link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />-->
-
-  <!--<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>-->
-  <!--&lt;!&ndash;<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"></script>&ndash;&gt;-->
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root><i class="fas fa-spinner fa-10x fa-spin center-block text-danger" style="margin-top: 15%"></i></app-root>
+
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script>
+    $(document).ready(function(){
+      let header = $('body');
+
+      let backgrounds = ['url(/assets/img/bg5.jpg)'
+        , 'url(/assets/img/bg1.jpg)'
+        , 'url(/assets/img/bg8.jpg)'];
+
+      let current = 0;
+
+      function nextBackground() {
+        current++;
+        current = current % backgrounds.length;
+        header.css('background-image', backgrounds[current]);
+      }
+      setInterval(nextBackground, 50000);
+
+      header.css('background-image', backgrounds[0]);
+      header.css('background-repeat', 'no-repeat');
+      header.css('background-size', 'cover');
+      header.css('transition', 'all 0.5s ease-out')
+    });
+  </script>
+
 </body>
 
 </html>

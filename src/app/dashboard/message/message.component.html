@@ -1,0 +1,38 @@
+<div class="mdc-card" style="height: 530px; overflow-y: auto;">
+  <h3 style="text-align: center; font-family: 'Arial Black'; font-size: medium; background-color: blue; color: white; padding: 10px; margin: 0px">Request & Complaints</h3>
+  <ul class="mdc-list mdc-list--two-line" *ngFor="let message of messages | async">
+    <div class="mdc-card" style=" padding: 5px; margin: 5px" *ngIf="messageVisible == true">
+      <li class="mdc-list-item" style="height: 30px">
+    <span class="mdc-list-item__text">
+      From: {{ message.name }}
+      <span class="mdc-list-item__secondary-text">
+       Date: {{ convertTime(message.timeStamp) }}
+      </span>
+    </span>
+      </li>
+      <div class="mdc-layout-grid" style="padding: 0">
+        <div class="mdc-layout-grid__inner">
+          <button class="mdc-button--raised mdc-layout-grid__cell--span-6" style="padding-left: 10px; background-color: green" (click)="read(message)">Read</button>
+          <button class="mdc-button--raised mdc-layout-grid__cell--span-6" style="padding-left: 10px; background-color: red" (click)="deleteMessage(message.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </ul>
+
+  <div *ngIf="visible == true" style="padding: 10px; margin: 10px" class="mdc-card">
+    <span class="mdc-list-item__text">
+      From: {{ sender }}
+      <span class="mdc-list-item__secondary-text">
+       Email: {{ email }}
+      </span>
+    </span>
+    <div>
+      Message: {{ details }}
+    </div>
+    <button (click)="visible = false; messageVisible = true" class="mdc-button mdc-button--raised">Back</button>
+  </div>
+
+</div>
+<button class="mdc-button--raised" (click)="mapView()">
+  Back to Map View
+</button>

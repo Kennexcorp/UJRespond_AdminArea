@@ -49,7 +49,10 @@ export class AuthService {
   loginWithEmail(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
-      this.authState = user;
+      if (user && user.token) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.authState = user;
+      }
       console.log('Authstate: ' + this.authState);
       })
       .catch(error => {
@@ -58,6 +61,7 @@ export class AuthService {
       });
   }
   signOut(): void {
+    localStorage.removeItem('currentUser');
     this.afAuth.auth.signOut();
     this.router.navigateByUrl('Login');
 }

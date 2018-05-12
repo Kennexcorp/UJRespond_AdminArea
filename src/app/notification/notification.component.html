@@ -1,24 +1,42 @@
-<div class="col-md-3">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-flag-o"></i> Notification</h3>
-    </div>
-    <div class="panel-body feed">
-      <section class="feed-item">
-        <div class="row">
-          <ul *ngFor="let notification of notifications | async">
-            <li class="message-preview col-md-offset-1">
-              <a (click)="onClick(notification)">
-                <span class="avatar"><i class="fa fa-bell"></i></span>
-                <span class="message" *ngIf="notification.emergency_id == 1">Health Emergency alert</span>
-                <span class="message" *ngIf="notification.emergency_id == 2">Fire Emergency alert</span>
-                <span class="message" *ngIf="notification.emergency_id == 1">Crime Emergency alert</span>
-              </a>
-            </li>
 
-          </ul>
-        </div>
-      </section>
-    </div>
+<div class="mdc-card" style="height: 530px; overflow-y: auto">
+  <div style="padding: 20px; background-color: blue; color: white; text-align: center; font-family: 'Arial Black'">
+    Incoming Emergencies
   </div>
+  <ul class="mdc-list mdc-list--two-line" *ngFor="let notification of notifications | async">
+    <div class="mdc-card" style="margin: 5px" *ngIf="notification.reportStatus == false">
+      <li class="mdc-list-item" (click)="onClick(notification)" title="Click to view emergency on map" >
+        <span class="mdc-list-item__graphic" role="presentation">
+          <i class="material-icons" aria-hidden="true">add_alert</i>
+        </span>
+        <span *ngIf="notification.id == 111" class="mdc-list-item__text ">
+          Health emergency alert
+        <span class="mdc-list-item__secondary-text">
+          Request for ambulance at ...
+          <span>{{convertTime(notification.timeStamp)}}</span>
+        </span>
+        </span>
+        <span *ngIf="notification.id == 222" class="mdc-list-item__text">
+          Fire emergency alert
+        <span class="mdc-list-item__secondary-text">
+          Request for fire truck at ...
+          <span>{{convertTime(notification.timeStamp)}}</span>
+        </span>
+        </span>
+        <span *ngIf="notification.id == 333" class="mdc-list-item__text">
+          Police emergency alert
+        <span class="mdc-list-item__secondary-text">
+          Request for police assistance at ...
+          <span>{{convertTime(notification.timeStamp)}}</span>
+        </span>
+        </span>
+      </li>
+      <button class="mdc-button--raised" style="background-color: green" (click)="acknowledge()">
+        Acknowledge
+      </button>
+      <button class="mdc-button--raised" style="background-color: red" (click)="decline()">
+        Decline
+      </button>
+    </div>
+  </ul>
 </div>

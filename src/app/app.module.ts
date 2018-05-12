@@ -15,11 +15,16 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {FormsModule} from '@angular/forms';
 import {AuthService} from './auth/auth.service';
-import {environment} from '../environments/environment';
+import {environment} from '../environments/environment.prod';
 import { AgmCoreModule } from '@agm/core';
 import {GeneralService} from "./general.service";
 import { ResgisterUserComponent } from './dashboard/resgister-user/resgister-user.component';
 import {GoogleMapsNg2Module} from "google-maps-ng2";
+import { EmergencyListComponent } from './dashboard/emergency-list/emergency-list.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import {AuthGuard} from "./auth.guard";
+import { MessageComponent } from './dashboard/message/message.component';
+import { TipsComponent } from './dashboard/tips/tips.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Login', pathMatch: 'full' },
@@ -33,14 +38,22 @@ const routes: Routes = [
         component: MapComponent
       },
       {
-        path: 'register',
-        component: ResgisterUserComponent
+        path: 'emergencies',
+        component: EmergencyListComponent
+      },
+      {
+        path: 'messages',
+        component: MessageComponent
+      },
+      {
+        path: 'postTip',
+        component: TipsComponent
       }
     ]
   },
   {
     path: '**',
-    component: DashboardComponent
+    component: PagenotfoundComponent
   }
   // { path: 'Signup', component: SignupComponent},
 ];
@@ -55,7 +68,11 @@ const routes: Routes = [
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    ResgisterUserComponent
+    ResgisterUserComponent,
+    EmergencyListComponent,
+    PagenotfoundComponent,
+    MessageComponent,
+    TipsComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +87,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
+    AuthGuard,
     AuthService,
     GeneralService
   ],

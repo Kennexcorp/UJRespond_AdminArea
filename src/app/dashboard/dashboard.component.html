@@ -1,24 +1,16 @@
-<div *ngIf="authService.isUserEmailLoggedIn">
+<div style="background-color: white; padding: 10px; margin-top: 8px; background-image: url('../../assets/img/eservice.png')">
 <app-navigation></app-navigation>
-<div id="page-wrapper">
-
-  <div class="row" style="margin: 0">
-    <!--Notifications-->
-    <app-notification></app-notification>
-    <!-- Map -->
-    <div class="col-md-6">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title"><i class="fa fa-map-o"></i> Register</h3>
-        </div>
-        <div class="panel-body">
-          <router-outlet></router-outlet>
-        </div>
+  <div class="mdc-layout-grid" style="margin-top: 50px">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell--span-3-desktop">
+        <app-notification></app-notification>
+      </div>
+      <div class="mdc-layout-grid__cell--span-6-desktop">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="mdc-layout-grid__cell--span-3-desktop">
+       <app-profile-detail></app-profile-detail>
       </div>
     </div>
-
-    <!-- User Profile -->
-    <app-profile-detail></app-profile-detail>
   </div>
-</div>
 </div>

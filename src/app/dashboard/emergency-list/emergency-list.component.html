@@ -1,0 +1,85 @@
+
+<div class="mdc-card" style="height: 530px; overflow-y: auto;">
+  <h3 style="text-align: center; font-family: 'Arial Black'; font-size: medium; background-color: blue; padding: 10px; margin: 0px; color: white">Manage Emergencies</h3>
+  <!--View Details Dialog-->
+<!--  <aside id="mdc-dialog-default"
+         class="mdc-dialog"
+         role="alertdialog"
+         aria-hidden="true"
+         aria-labelledby="mdc-dialog-colored-footer-button-label"
+         aria-describedby="mdc-dialog-colored-footer-button-description">
+
+    <div class="mdc-dialog__backdrop"></div>
+  </aside>-->
+
+  <!--Emergency Lists-->
+  <ul class="mdc-list mdc-list--two-line" *ngFor="let emergency of emergency_list | async">
+  <div class="mdc-card" style="padding: 5px; margin: 5px" *ngIf="listVisible == true">
+      <li class="mdc-list-item" style="height: 50px">
+        <span class="mdc-list-item__text" *ngIf="emergency.id==111">
+          Ambulance Request
+          <span class="mdc-list-item__secondary-text">
+       Longitude: {{emergency.latitude}} Latitude: {{emergency.latitude}}
+          </span>
+          Date: {{convertTime(emergency.timeStamp)}}
+        </span>
+        <span class="mdc-list-item__text" *ngIf="emergency.id==222">
+          Fire Outbreak
+          <span class="mdc-list-item__secondary-text">
+            Longitude: {{emergency.latitude}} Latitude: {{emergency.latitude}}
+          </span>
+          Date: {{convertTime(emergency.timeStamp)}}
+        </span>
+        <span class="mdc-list-item__text" *ngIf="emergency.id==333">
+          Crime Report
+          <span class="mdc-list-item__secondary-text">
+            Longitude: {{emergency.latitude}} Latitude: {{emergency.latitude}}
+          </span>
+          Date: {{convertTime(emergency.timeStamp)}}
+        </span>
+      </li>
+
+      <div class="mdc-layout-grid__inner">
+        <button class="mdc-button mdc-button--raised mdc-layout-grid__cell--span-6" style="padding-left: 10px" id="default-dialog-activation" (click)="viewDetail(emergency)">View Details</button>
+        <button class="mdc-button mdc-button--raised mdc-layout-grid__cell--span-6" style="padding-left: 10px; background-color: red" (click)="deleteEmergency(emergency.reportId)">Delete</button>
+      </div>
+
+    </div>
+  </ul>
+  <div *ngIf="visible == true" style="margin: 10px" class="mdc-card">
+
+    <h2 class="text-center" style="font-size: 25px; background-color: blue; padding: 10px; color: white">
+      Emergency details
+    </h2>
+
+    <table class="table table-striped">
+      <tbody>
+      <tr>
+        <th scope="row">Date: </th>
+        <td>{{ edate }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Type: </th>
+        <td>{{ etype }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Longitude:</th>
+        <td>{{ eLongitude }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Latitude:</th>
+        <td>{{ eLatitude }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Reporter's name:</th>
+        <td>{{ eVictim }}</td>
+      </tr>
+      </tbody>
+    </table>
+    <!--Remove this-->
+    <button type="button" (click)="visible = false; listVisible = true" class="mdc-button mdc-button--raised" >Close</button>
+  </div>
+</div>
+<button class="mdc-button--raised" (click)="mapView()">
+  Back to Map View
+</button>

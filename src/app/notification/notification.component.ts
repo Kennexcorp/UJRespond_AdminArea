@@ -11,11 +11,11 @@ export class NotificationComponent implements OnInit {
   emergencyType: any;
   emergencyTime: Date;
   emergencyDetail: any;
-  emergencyID: any;
+  emergency: any;
   notifications: Observable<any[]>;
   constructor(private generalService: GeneralService) {
     this.emergencyType = '';
-    this.emergencyTime = new Date();
+    // this.emergencyTime = new Date();
     this.emergencyDetail = '';
     this.getNotifications();
   }
@@ -23,16 +23,19 @@ export class NotificationComponent implements OnInit {
     this.notifications = this.generalService.getNotifications();
   }
   onClick(emergencyData: any) {
+    this.emergency = emergencyData;
     this.generalService.emergencyData.emit(emergencyData);
-    this.getProfile(emergencyData.userID);
-    console.log(emergencyData);
+    this.getProfile(emergencyData.userId);
+    // console.log(emergencyData);
   }
 
   getProfile(id: any) {
+    console.log(id);
     this.generalService.getPatientProfile()
       .subscribe(profile_data => {
         profile_data.forEach(profile => {
-          if (profile.userID === id) {
+          // console.log(profile);
+          if (profile.id === id) {
             this.generalService.profileData.emit(profile);
           }
         });
@@ -42,4 +45,29 @@ export class NotificationComponent implements OnInit {
   ngOnInit() {
   }
 
+  acknowledge (): any {
+    if (this.emergency == null) {
+      alert('you must view the emergency first');
+    } else {
+      alert('Request acknowledged');
+      this.emergency.reportStatus = 'accepted';
+      this.generalService.updateEmergency(this.emergency);
+    }
+    this.emergency = null;
+    console.log(this.emergency);
+  }
+  decline(): any {
+    if (this.emergency == null) {
+      alert('you must view the emergency first');
+    } else {
+      alert('Request Declined');
+      this.emergency.reportStatus = 'declined';
+      this.generalService.updateEmergency(this.emergency);
+      console.log(this.emergency);
+    }
+    this.emergency = null;
+  }
+  convertTime(timestamp: any): any {
+    return new Date(timestamp * 1000).toDateString();
+  }
 }

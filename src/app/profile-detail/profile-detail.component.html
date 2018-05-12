@@ -1,22 +1,63 @@
-<div class="col-md-3">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-user-o"></i> Profile Info</h3>
+<!--<div class="col-md-3">-->
+  <!--<div class="panel panel-primary">-->
+    <!--<div class="panel-heading">-->
+      <!--<h3 class="panel-title"><i class="fa fa-user-o"></i> Profile Info</h3>-->
+    <!--</div>-->
+    <!--<div class="panel-body feed">-->
+      <!--<section class="feed-item">-->
+        <!--<div class="card">-->
+          <!--<div style="height: 200px; width: 200px">-->
+          <!--<img class="card-img-top" src="{{ profile_picture }}" alt="No image availiable for individual" style="height: 200px; width: 200px; align-content: center">-->
+        <!--</div>-->
+          <!--<div class="card-block">-->
+            <!--<h4 class="card-title">Name: {{ name }} </h4>-->
+            <!--<p class="card-text">Faculty: {{ faculty }}</p>-->
+            <!--<p class="card-text">Matric Number: {{ matNum }}</p>-->
+            <!--<p class="card-text">SOS Contact:nextOfKinmber }}</p>-->
+            <!--<p class="card-text">Other Details: {{ other_details }}</p>-->
+            <!--&lt;!&ndash; <a href="#" class="btn btn-primary">More Details>></a> &ndash;&gt;-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</section>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="mdc-card" style="height: 530px">
+  <div class="mdc-card" style="margin: 10px; height: 500px;">
+    <div class="mat-card-title" style="padding: 20px; background-color: blue; color: white; text-align: center; font-family: 'Arial Black'">{{ matNum }}</div>
+    <div class="mdc-card__media mdc-card__media--square" style="height: 250px">
+      <div class="mdc-card__media-content">
+        <img class="card-img-top" src="{{ profile_picture }}" alt="No image availiable for individual" style="height: 100%; width: 100%; align-content: center; padding: 10px">
+      </div>
     </div>
-    <div class="panel-body feed">
-      <section class="feed-item">
-        <div class="card">
-          <img class="card-img-top" src="../../assets/img/avartar.svg" alt="Card image cap" style="height: 200px; width: 200px">
-          <div class="card-block">
-            <h4 class="card-title">Name: {{ name }} </h4>
-            <p class="card-text">Department: {{ department }}</p>
-            <p class="card-text">Blood Group: {{ blood_group }}</p>
-            <p class="card-text">Parent Number: {{ parent_number }}</p>
-            <p class="card-text">Other Details: {{ other_details }}</p>
-            <a href="#" class="btn btn-primary">More Details>></a>
-          </div>
-        </div>
-      </section>
+    <!-- ... content ... -->
+    <div class="mat-card" style="height: 200px; overflow-y: auto">
+      <table class="table table-striped">
+        <tbody>
+        <tr>
+          <th scope="row">Name: </th>
+          <td>{{ name }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Faculty: </th>
+          <td>{{ faculty }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Next Of Kin </th>
+          <td>{{ nextOfKin }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Current address: </th>
+          <td>{{ address }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Other Details: </th>
+          <td>{{ other_details }}</td>
+        </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
+
 </div>

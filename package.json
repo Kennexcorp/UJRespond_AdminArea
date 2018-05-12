@@ -30,6 +30,7 @@
     "firebase": "^4.5.2",
     "geofire": "^4.1.2",
     "google-maps-ng2": "^1.0.9",
+    "material-components-web": "^0.31.0",
     "ngx-bootstrap": "^1.9.3",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"

@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.signOut();
   }
   clearErrorMessage() {
     this.errorMessage = '';
@@ -37,10 +38,10 @@ export class LoginComponent implements OnInit {
     if (this.validateForm(this.email, this.password)) {
       this.authService.signUpWithEmail(this.email, this.password)
         .then(() => {
-          this.router.navigateByUrl('Dashboard');
+          this.router.navigate(['/Dashboard']);
         }).catch(_error => {
         this.error = _error;
-        this.router.navigate(['/']);
+        this.router.navigate(['/Login']);
       });
     }
   }
@@ -52,7 +53,7 @@ export class LoginComponent implements OnInit {
         .then(() => this.router.navigate(['/Dashboard']))
         .catch(_error => {
           this.error = _error;
-          this.router.navigate(['/']);
+          this.router.navigate(['/Login']);
         });
     }
   }
